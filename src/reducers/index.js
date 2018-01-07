@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
 import beers from './beersReducer';
-import ids from './idsReducer';
+import favorites from './favoritesReducer';
+import glasses from './glassesReducer';
 //______________________________________________________________________________
 
 const rootReducer = combineReducers({
     beers,
-    ids
+    favorites,
+    glasses
 });
 
 export default rootReducer;

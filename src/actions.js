@@ -1,64 +1,73 @@
 import axios from 'axios';
+import { actionType } from './constants';
+import { v4 } from 'uuid';
 //______________________________________________________________________________
 
 
-
-let uniqueId = 0;
-export const pourBeer = () => ({
-    type: 'GET_BEER',
-    id: 'Beer'+uniqueId++
+export const getAGlass = () => ({
+    type: actionType.getGlass,
+    glassId: v4()
 });
 
 
-
-export const isLoading = (id, boolean) => ({
-    type: 'LOADING',
+export const searchingTheFridge = (boolean, glassId) => ({
+    type: actionType.loading,
     isLoading: boolean,
-    id
+    glassId
 });
 
 
-
-export const hasErrored = (id, boolean) => ({
-    type: 'ERRORED',
+export const bartenderMessedUp = (boolean, glassId) => ({
+    type: actionType.errored,
     hasErrored: boolean,
-    id
+    glassId
+});
+
+
+export const clearGlass = (glassId) => ({
+    type: actionType.clearGlass,
+    glassId
+});
+
+
+export const pour = (beer, glassId) => ({
+    type: actionType.pour,
+    beer,
+    glassId
 });
 
 
 
-export const setName = (id, name) => ({
-    type: 'SET_NAME',
-    name,
-    id
-});
-
-
-
-export const setFood = (id, arrayOfFood) => ({
-    type: 'SET_FOOD',
-    food: arrayOfFood,
-    id
-});
-
-
-
-export const getMeABeer = (url, id) => {
+export const getBeerFromFridge = (url, glassId) => {
     return dispatch => {
 
-        dispatch(isLoading(id, true));
+        dispatch(searchingTheFridge(true, glassId));
 
         axios.get(url)
              .then( response => {
-                 dispatch(setName(id, response.data[0].name));
-                 dispatch(setFood(id, response.data[0].food_pairing));
-                 dispatch(isLoading(id, false));
+                const beer = {
+                    id: response.data[0].id,
+                    name: response.data[0].name,
+                    food: response.data[0].food_pairing,
+                }
+                dispatch(searchingTheFridge(false, glassId));
+                dispatch(pour(beer, glassId));
              })
              .catch( error => {
-                 console.log(error);
-                 dispatch(isLoading(id, false));
-                 dispatch(hasErrored(id, true));
-                 setTimeout( () => dispatch(hasErrored(id, false)), 5000 );
+                console.log(error);
+                dispatch(searchingTheFridge(false, glassId));
+                dispatch(bartenderMessedUp(true, glassId));
+                setTimeout( () => {
+                    dispatch(bartenderMessedUp(false, glassId));
+                    dispatch(clearGlass(glassId))},
+                    3500
+                );
              });
     };
 };
+
+
+export const love = (beerId) => ({
+    type: actionType.toggleFavorite,
+    beerId
+});

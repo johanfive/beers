@@ -1,8 +1,9 @@
 
 export const actionType = {
-    getBeer: 'GET_BEER',
     loading: 'LOADING',
     errored: 'ERRORED',
-    setName: 'SET_NAME',
-    setFood: 'SET_FOOD'
+    getGlass: 'GET_A_GLASS',
+    clearGlass: 'CLEAR_GLASS_OFF_THE_TABLE',
+    pour: 'POUR_BEER_INTO_GLASS',
+    toggleFavorite: 'TOGGLE_FAVORITE'
 };
