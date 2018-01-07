@@ -5,13 +5,11 @@ import { love } from '../actions';
 
 
 const Like = ({toggleFavorite, wasLiked}) => (
-    <div>
-        <button onClick={toggleFavorite}>
-            {wasLiked
-                ? <i className="material-icons">favorite</i>
-                : <i className="material-icons">favorite_border</i>}
-        </button>
-    </div>
+    <button onClick={toggleFavorite}>
+        {wasLiked
+            ? <i className="material-icons">favorite</i>
+            : <i className="material-icons">favorite_border</i>}
+    </button>
 );
 
 

@@ -4,6 +4,14 @@
   padding: .2em;
   margin: 2em auto;
 }
+
+.favs>button {
+  display: inline;
+  position: relative;
+  top: 2px;
+  margin: .8em 0;
+}
+
 .glass {
   position: relative;
   width: 20em;
@@ -14,6 +22,11 @@
 }
 .glass h2 {
   text-align: center;
+}
+.favs>h2 {
+  display: inline;
+  border: 1px solid black;
+  padding: .5em;
 }
 
 .App-header {

@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Bartender from './Bartender';
 import BarCounter from './BarCounter';
+import Favorites from './Favorites';
 //______________________________________________________________________________
 
 
@@ -13,6 +14,7 @@ const App = () => {
             </header>
             <Bartender />
             <BarCounter />
+            <Favorites />
         </div>
     );
 };
