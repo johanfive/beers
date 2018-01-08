@@ -44,10 +44,12 @@ const byId = (state = {}, action) => {
         case actionType.loading:
         case actionType.errored:
         case actionType.pour:
-            return {
+
+            if (action.glassId) {return {
                 ...state,
                 [action.glassId]: glass(state[action.glassId], action)
-            };
+            };} else {return state;}
+
         case actionType.clearGlass:
             let stateCopy = state;
             delete stateCopy[action.glassId];

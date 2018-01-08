@@ -14,7 +14,7 @@
 
 .glass {
   position: relative;
-  width: 20em;
+  width: 17em;
   border: 8px solid black;
   border-top: 0;
   margin: 3.5em auto;
@@ -40,7 +40,7 @@
   position: relative;
   font-size: 2.5em;
   width: 5em;
-  height: 3.5em;
+  height:140px;
   border: 5px solid white;
   padding-left: 5px;
 }
@@ -59,4 +59,38 @@
   height: 95px;
   width: 35px;
   right: -51px;
+}
+
+
+
+.favBadge {
+  color: white;
+  position:relative;
+  float: right;
+  margin: 25px;
+}
+.favBadge[data-favbadge]:after {
+   content:attr(data-favBadge);
+   position:absolute;
+   top:-11px;
+   font-size:.8em;
+   color:hsla(30, 95%, 55%, 1);
+   text-align:center;
+   line-height:20px;
+
+}
+
+.search {
+  width: 50%;
+  margin: 20px auto;
+  padding: 1em;
+  border-color: black;
+}
+.search>input {
+  border: 2px solid black;
+  padding: 1em;
+  width: 50%;
+}
+.search>button {
+  display: inline;
 }

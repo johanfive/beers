@@ -8,8 +8,8 @@ import Like from './Like';
 const Favorites = ({favorites}) => (
     favorites.map(
         favId => (
-            <div className="favs">
-                <Name key={favId} id={favId} />
+            <div key={favId} className="favs">
+                <Name id={favId} />
                 <Like id={favId} />
             </div>
         )
