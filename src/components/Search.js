@@ -28,7 +28,7 @@ class Search extends React.Component {
         const results = this.props.searchResult.map(
             resultId => {
             if (resultId === 'NOPENOPENOPE') {
-                return <span key={resultId}>Can't drink beer with that!</span>;
+                return <span key={resultId}>Cannot drink beer with that!</span>;
             } else {
                 return <Name key={resultId} id={resultId} />;
             }});
@@ -36,7 +36,7 @@ class Search extends React.Component {
         return (
             <fieldset className="search">
                 <legend>Recommend Beers based on Food</legend>
-                <input value={this.state.search} onChange={this.handleChange} placeholder="eg: 'burger'" />
+                <input value={this.state.search} onChange={this.handleChange} placeholder="eg: burger" />
                 <button onClick={this.handleSubmit}>Submit</button>
                 {results}
             </fieldset>
