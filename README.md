@@ -5,7 +5,7 @@ See it [here](https://johanfive.github.io/beers)
 
 
 This small project showcases the use of [Axios](https://www.npmjs.com/package/axios) in combination to [redux-thunk](https://www.npmjs.com/package/redux-thunk)
-for async calls to a public API ([Punk Beer](https://punkapi.com/))  
+for dispatching several actions asynchronously in response to calls to a public API ([Punk Beer](https://punkapi.com/))  
 
 
 
