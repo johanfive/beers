@@ -1,9 +1,18 @@
 
-export const actionType = {
-    loading: 'LOADING',
-    errored: 'ERRORED',
-    getGlass: 'GET_A_GLASS',
-    clearGlass: 'CLEAR_GLASS_OFF_THE_TABLE',
-    pour: 'POUR_BEER_INTO_GLASS',
-    toggleFavorite: 'TOGGLE_FAVORITE'
-};
+export const ROOT_URI = 'https://api.punkapi.com/v2';
+export const ADD_BEER_TO_REDUX_STORE = 'ADD_BEER_TO_REDUX_STORE';
+
+
+export const LOADING = 'LOADING';
+export const ERRORED = 'ERRORED';
+export const GET_GLASS = 'GET_A_GLASS';
+export const CLEAR_GLASS = 'CLEAR_GLASS_OFF_THE_TABLE';
+export const TOGGLE_FAVORITE = 'TOGGLE_FAVORITE';
+
+
+export const NEW_SEARCH_WORD = 'NEW_SEARCH_WORD';
+export const INCR_CURR_PAGE = 'INCR_CURR_PAGE';
+export const DECR_CURR_PAGE = 'DECR_CURR_PAGE';
+export const REQUEST_RECOMMENDATIONS = 'REQUEST_RECOMMENDATIONS';
+export const RECEIVE_RECOMMENDATIONS = 'RECEIVE_RECOMMENDATIONS';
+export const FAILREQ_RECOMMENDATIONS = 'FAILREQ_RECOMMENDATIONS';

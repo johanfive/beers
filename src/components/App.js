@@ -4,7 +4,7 @@ import Bartender from './Bartender';
 import BarCounter from './BarCounter';
 import Favorites from './Favorites';
 import FavCounter from './FavCounter';
-import Search from './Search';
+import Search from './Search/';
 //______________________________________________________________________________
 
 

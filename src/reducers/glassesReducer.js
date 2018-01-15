@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { actionType } from '../constants';
+import * as actionType from '../constants';
 import status from './statusReducer';
 //______________________________________________________________________________
 
@@ -16,18 +16,18 @@ const initGlass = {
 
 const glass = (state = initGlass, action) => {
     switch (action.type) {
-        case actionType.getGlass:
+        case actionType.GET_GLASS:
             return {
                 ...state,
                 glassId: action.glassId
             };
-        case actionType.loading:
-        case actionType.errored:
+        case actionType.LOADING:
+        case actionType.ERRORED:
             return {
                 ...state,
                 status: status(state[status], action)
             };
-        case actionType.pour:
+        case actionType.ADD_BEER_TO_REDUX_STORE:
             return {
                 ...state,
                 beer: action.beer.id
@@ -40,17 +40,21 @@ const glass = (state = initGlass, action) => {
 
 const byId = (state = {}, action) => {
     switch (action.type) {
-        case actionType.getGlass:
-        case actionType.loading:
-        case actionType.errored:
-        case actionType.pour:
+        case actionType.GET_GLASS:
+        case actionType.LOADING:
+        case actionType.ERRORED:
+        case actionType.ADD_BEER_TO_REDUX_STORE:
 
-            if (action.glassId) {return {
-                ...state,
-                [action.glassId]: glass(state[action.glassId], action)
-            };} else {return state;}
+            if (action.glassId) {
+                return {
+                    ...state,
+                    [action.glassId]: glass(state[action.glassId], action)
+                };
+            } else {
+                return state;
+            }
 
-        case actionType.clearGlass:
+        case actionType.CLEAR_GLASS:
             let stateCopy = state;
             delete stateCopy[action.glassId];
             return stateCopy;
@@ -63,9 +67,9 @@ const byId = (state = {}, action) => {
 
 const allIds = (state = [], action) => {
     switch (action.type) {
-        case actionType.getGlass:
+        case actionType.GET_GLASS:
             return [...state, action.glassId];
-        case actionType.clearGlass:
+        case actionType.CLEAR_GLASS:
             return state.filter(id => id !== action.glassId);
         default:
             return state;

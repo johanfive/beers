@@ -1,14 +1,10 @@
-import { actionType } from '../constants';
+import * as actionType from '../constants';
 //______________________________________________________________________________
 
 
-// This is neither a stack (LIFO) nor a queue (FIFO)
-// It searches the array for an element
-// Remove it if found
-// Add it otherwise
 
 const favorites = (state = [], action) => {
-    if (action.type === actionType.toggleFavorite) {
+    if (action.type === actionType.TOGGLE_FAVORITE) {
 
         const idExists = state.some(id => id === action.beerId);
         if (idExists) {

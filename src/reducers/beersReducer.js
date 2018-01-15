@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { actionType } from '../constants';
+import * as actionType from '../constants';
 //______________________________________________________________________________
 
 
@@ -13,14 +13,14 @@ const initBeer = {
 
 const beer = (state = initBeer, action) => {
     switch (action.type) {
-        case actionType.pour:
+        case actionType.ADD_BEER_TO_REDUX_STORE:
             return {
                 ...state,
                 id: action.beer.id,
                 name: action.beer.name,
                 food: action.beer.food,
             };
-        case actionType.toggleFavorite:
+        case actionType.TOGGLE_FAVORITE:
             return {
                 ...state,
                 liked: !state.liked
@@ -33,12 +33,12 @@ const beer = (state = initBeer, action) => {
 
 const byId = (state = {}, action) => {
     switch (action.type) {
-        case actionType.pour:
+        case actionType.ADD_BEER_TO_REDUX_STORE:
             return {
                 ...state,
                 [action.beer.id]: beer(state[action.beer.id], action)
             };
-        case actionType.toggleFavorite:
+        case actionType.TOGGLE_FAVORITE:
             return {
                 ...state,
                 [action.beerId]: beer(state[action.beerId], action)
@@ -51,7 +51,7 @@ const byId = (state = {}, action) => {
 
 const allIds = (state = [], action) => {
     switch (action.type) {
-        case actionType.pour:
+        case actionType.ADD_BEER_TO_REDUX_STORE:
             return [...state, action.beer.id];
         default:
             return state;

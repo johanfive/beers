@@ -1,4 +1,4 @@
-import { actionType } from '../constants';
+import * as actionType from '../constants';
 //______________________________________________________________________________
 
 const initStatus = {
@@ -9,10 +9,13 @@ const initStatus = {
 
 const status = (state = initStatus, action) => {
     switch (action.type) {
-        case actionType.loading:
+
+        case actionType.LOADING:
             return {...state, isLoading: action.isLoading};
-        case actionType.errored:
+
+        case actionType.ERRORED:
             return {...state, hasErrored: action.hasErrored};
+
         default:
             return state;
     }
