@@ -8,19 +8,17 @@ import Search from './Search/';
 //______________________________________________________________________________
 
 
-const App = () => {
-    return (
-        <div className="App">
-            <header className="App-header">
-                <FavCounter />
-                <h1 className="App-title">Beers</h1>
-            </header>
-            <Bartender />
-            <BarCounter />
-            <Favorites />
-            <Search />
-        </div>
-    );
-};
+const App = () => (
+    <div className="App">
+        <header className="App-header">
+            <FavCounter />
+            <h1 className="App-title">Beers</h1>
+        </header>
+        <Bartender />
+        <BarCounter />
+        <Favorites />
+        <Search />
+    </div>
+);
 
 export default App;

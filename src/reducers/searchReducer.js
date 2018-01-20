@@ -1,78 +1,34 @@
- import * as actionType from '../constants';
+import * as actionType from '../constants';
+import { combineReducers } from 'redux';
+import pagination from './paginationReducer';
 //______________________________________________________________________________
 
 
 const initSearch = {
     isSearching: false,
-    searchWord: '',
-    currentPage: 1,
-    pagination: {
-        '1': {
-            id: '1',
-            fetchedOnce: false,
-            results: []
-        }
-    }
+    searchWord: ''
 };
 
 
-const search = (state = initSearch, action) => {
+const searchStuff = (state = initSearch, action) => {
     switch (action.type) {
 
-        case actionType.NEW_SEARCH_WORD:
-            return {
-                ...initSearch, // to reset
-                searchWord: action.searchWord
-            };
+        case actionType.NEW_SEARCH_WORD: return {...state, searchWord: action.searchWord};
 
-        case actionType.INCR_CURR_PAGE:
-            return {
-                ...state,
-                currentPage: state.currentPage + 1
-            };
-
-        case actionType.DECR_CURR_PAGE:
-            return {
-                ...state,
-                currentPage: state.currentPage - 1
-            };
-
+        case actionType.REQUEST_RECOMMENDATIONS: return {...state, isSearching: true};
         case actionType.RECEIVE_RECOMMENDATIONS:
-        if (action.recOnNextPage) {
-            return {
-                ...state,
-                pagination: {
-                    ...state.pagination,
-                    [state.currentPage]: {
-                        id: state.currentPage,
-                        fetchedOnce: true,
-                        results: action.recToShow
-                    },
-                    [state.currentPage + 1]: {
-                        ...state.pagination[state.currentPage + 1],
-                        id: state.currentPage + 1,
-                        results: [action.recOnNextPage]
-                    }
-                }
-            };
-        } else {
-            return {
-                ...state,
-                pagination: {
-                    ...state.pagination,
-                    [state.currentPage]: {
-                        id: state.currentPage,
-                        fetchedOnce: true,
-                        results: action.recToShow
-                    }
-                }
-            };
-        }
+        case actionType.FAILREQ_RECOMMENDATIONS: return {...state, isSearching: false};
 
         default:
             return state;
     }
 }
+
+
+const search = combineReducers({
+    searchStuff,
+    pagination
+});
 
 
 export default search;

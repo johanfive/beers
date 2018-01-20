@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { askForRecommendations } from './actions';
 import Name from '../../Name';
+import Loading from '../../Loading';
 //______________________________________________________________________________
 
 
@@ -23,7 +24,7 @@ class Results extends React.Component {
             outcome = resultIds.map(id => <Name key={id} id={id} />);
         }
 
-        return <div>{outcome}</div>;
+        return <div className="searchResults"><Loading>{outcome}</Loading></div>;
     }
 };
 
@@ -31,12 +32,13 @@ class Results extends React.Component {
 
 const mapStateToProps = (state, {page}) => ({
     fetchedOnce: state.search.pagination[page].fetchedOnce,
-    searchWord: state.search.searchWord,
+    searchWord: state.search.searchStuff.searchWord,
     resultIds: state.search.pagination[page].results
 });
 
+
 const mapDispatchToProps = (dispatch, {page}) => ({
-    getResults: searchWord => dispatch(askForRecommendations(searchWord, page))
+    getResults: searchWord => {dispatch(askForRecommendations(searchWord, page))}
 });
 // Todo: maybe dispatch something on Unmount to clear search data?
 

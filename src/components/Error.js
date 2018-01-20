@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { hasErrored } from '../selectors';
 //______________________________________________________________________________
 
 
@@ -9,7 +10,7 @@ const Error = ({hasErrored}) => {
 
 
 const mapStateToProps = (state, {glassId}) => ({
-    hasErrored: state.glasses.byId[glassId].status.hasErrored
+    hasErrored: hasErrored(state, glassId)
 });
 
 export default connect(mapStateToProps)(Error);

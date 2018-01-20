@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { getAllFavoriteBeers } from '../selectors';
 import Name from './Name';
 import Like from './Like';
 //______________________________________________________________________________
@@ -18,7 +19,7 @@ const Favorites = ({favorites}) => (
 
 
 const mapStateToProps = state => ({
-    favorites: state.favorites
+    favorites: getAllFavoriteBeers(state)
 });
 
 

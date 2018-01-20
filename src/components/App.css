@@ -82,15 +82,24 @@
 
 .search {
   width: 50%;
-  margin: 20px auto;
+  margin: 5em auto;
   padding: 1em;
-  border-color: black;
 }
-.search>input {
+.search fieldset {
+  display: block;
   border: 2px solid black;
-  padding: 1em;
-  width: 50%;
 }
-.search>button {
-  display: inline;
+.search input {
+  display: block;
+  width: 85%;
+  padding: 1em;
+  margin: .5em auto;
+}
+.search button {
+  display: inline-block;
+  margin: 0 0 0 2em;
+}
+.searchResults {
+  height: 20em;
+  overflow: auto;
 }

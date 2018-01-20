@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { getAllGlasses } from '../selectors';
 import Glass from './Glass';
 //______________________________________________________________________________
 
@@ -10,7 +11,7 @@ const BarCounter = ({glasses}) => (
 
 
 const mapStateToProps = state => ({
-    glasses: state.glasses.allIds
+    glasses: getAllGlasses(state)
 });
 
 

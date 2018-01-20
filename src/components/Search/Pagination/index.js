@@ -7,24 +7,25 @@ import { increment, decrement } from './actions';
 
 const Pagination = ({totalPages, page, prev, next}) => (
     <div>
-        {page === 1 ? null : <button onClick={prev}>Prev</button>}
         <Results page={page} />
-        {totalPages > page ? <button onClick={next}>Next</button> : null}
-        {totalPages > 2 ? <span>{page}</span> : null}
+        {totalPages > 2 ? <span style={{float: "left"}}>{page}</span> : null}
+        {page === 1 ? null : <button style={{float: "left"}} onClick={prev}>Prev</button>}
+        {totalPages > page ? <button style={{float: "right"}} onClick={next}>Next</button> : null}
     </div>
 );
 
 
 
-
 const mapStateToProps = state => ({
-    page: state.search.currentPage,
-    totalPages: Object.keys(state.search.pagination).length
+    page: state.search.pagination.currentPage,
+    totalPages: Object.keys(state.search.pagination).length - 1
 });
+
 
 const mapDispatchToProps = (dispatch) => ({
     next: () => dispatch(increment()),
     prev: () => dispatch(decrement())
 });
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pagination);

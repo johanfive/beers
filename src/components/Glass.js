@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getBeerFromFridge } from '../actions';
+import { getBeerIdFrom } from '../selectors';
 import Refresh from './Refresh';
 import Loading from './Loading';
 import Error from './Error';
@@ -29,7 +30,7 @@ class Glass extends React.Component {
 
 const mapStateToProps = (state, {glassId}) => ({
     // get which beer was served in this glass
-    beerId: state.glasses.byId[glassId].beer
+    beerId: getBeerIdFrom(state, glassId)
 });
 
 

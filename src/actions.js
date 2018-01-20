@@ -57,17 +57,12 @@ export const getBeerFromFridge = (url, glassId) => {
         .then( response => {
             // Response is not empty
             if (response.data && response.data.length) {
-                // When the response contains multiple items:
-                response.data.forEach(
-                    item => {
-                        const beer = {
-                            id: item.id,
-                            name: item.name,
-                            food: item.food_pairing,
-                        };
-                        dispatch(pour(beer, glassId));
-                    }
-                );
+                const beer = {
+                    id: response.data[0].id,
+                    name: response.data[0].name,
+                    food: response.data[0].food_pairing,
+                };
+                dispatch(pour(beer, glassId));
             } else {
                 // Data is empty. Eg: search matches no result.
                 // this is now "deducted" by the component. No need to dispatch anything.

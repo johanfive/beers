@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { love } from '../actions';
+import { wasLiked } from '../selectors';
 //______________________________________________________________________________
 
 
@@ -14,7 +15,7 @@ const Like = ({toggleFavorite, wasLiked}) => (
 
 
 const mapStateToProps = (state, {id}) => ({
-    wasLiked: state.beers.byId[id].liked
+    wasLiked: wasLiked(state, id)
 });
 
 
